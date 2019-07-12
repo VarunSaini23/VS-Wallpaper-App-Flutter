@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vs_wallpapers/src/bloc/search_screen/search_provider.dart';
 
 class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SearchBloc searchBloc = SearchProvider.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -12,7 +14,7 @@ class SearchBar extends StatelessWidget {
         ),
         Flexible(
           flex: 1,
-          child: searchButton(context),
+          child: searchButton(searchBloc),
         ),
       ],
     );
@@ -36,12 +38,12 @@ class SearchBar extends StatelessWidget {
     );
   }
 
-  Widget searchButton(context) {
+  Widget searchButton(SearchBloc searchBloc) {
     return Container(
       height: 50.0,
       child: FloatingActionButton(
         onPressed: () {
-
+          searchBloc.startSearch("nature");
         },
         child: Icon(Icons.arrow_forward),
       ),
