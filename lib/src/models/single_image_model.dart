@@ -72,29 +72,29 @@ class SingleImageModel {
     previewURL = json['previewURL'];
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['largeImageURL'] = this.largeImageURL;
-    data['webformatHeight'] = this.webformatHeight;
-    data['webformatWidth'] = this.webformatWidth;
-    data['likes'] = this.likes;
-    data['imageWidth'] = this.imageWidth;
+//    data['webformatHeight'] = this.webformatHeight;
+//    data['webformatWidth'] = this.webformatWidth;
+//    data['likes'] = this.likes;
+//    data['imageWidth'] = this.imageWidth;
     data['id'] = this.id;
-    data['user_id'] = this.userId;
-    data['views'] = this.views;
-    data['comments'] = this.comments;
+//    data['user_id'] = this.userId;
+//    data['views'] = this.views;
+//    data['comments'] = this.comments;
     data['pageURL'] = this.pageURL;
-    data['imageHeight'] = this.imageHeight;
-    data['webformatURL'] = this.webformatURL;
-    data['type'] = this.type;
-    data['previewHeight'] = this.previewHeight;
+//    data['imageHeight'] = this.imageHeight;
+//    data['webformatURL'] = this.webformatURL;
+//    data['type'] = this.type;
+//    data['previewHeight'] = this.previewHeight;
     data['tags'] = this.tags;
-    data['downloads'] = this.downloads;
-    data['user'] = this.user;
-    data['favorites'] = this.favorites;
-    data['imageSize'] = this.imageSize;
-    data['previewWidth'] = this.previewWidth;
-    data['userImageURL'] = this.userImageURL;
+//    data['downloads'] = this.downloads;
+//    data['user'] = this.user;
+//    data['favorites'] = this.favorites;
+//    data['imageSize'] = this.imageSize;
+//    data['previewWidth'] = this.previewWidth;
+//    data['userImageURL'] = this.userImageURL;
     data['previewURL'] = this.previewURL;
     return data;
   }

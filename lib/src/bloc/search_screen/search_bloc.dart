@@ -5,9 +5,11 @@ import 'package:vs_wallpapers/src/network/repository.dart';
 class SearchBloc{
 
   final _searchResults = BehaviorSubject<ApiResultModel>();
+  final _inputText = BehaviorSubject<String>();
   Repository repository = Repository();
 
   Observable<ApiResultModel> get searchResults => _searchResults.stream;
+  Observable<String> get inputText => _inputText.stream;
 
   startSearch(String query) async {
     final result = await repository.getSearchResult(query);
@@ -15,8 +17,13 @@ class SearchBloc{
     _searchResults.sink.add(result);
   }
 
+  putSearchText(String text){
+    _inputText.sink.add(text);
+  }
+
   dispose(){
-//      _topOptionProvider.close();
+      _searchResults.close();
+      _inputText.close();
   }
 
 }

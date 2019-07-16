@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vs_wallpapers/src/bloc/full_app_provider.dart';
+import 'package:vs_wallpapers/src/screens/favourite_screen/favourite_screen.dart';
 
 class TopChooseOptionsWidget extends StatefulWidget {
   @override
@@ -9,14 +10,15 @@ class TopChooseOptionsWidget extends StatefulWidget {
 class _TopChooseOptionsWidgetState extends State<TopChooseOptionsWidget> {
   @override
   Widget build(BuildContext context) {
-    TextStyle style =
-    TextStyle(fontWeight: FontWeight.w800, color: Colors.orange);
+    TextStyle blackTextstyle =
+        TextStyle(fontWeight: FontWeight.w800, color: Colors.black);
+    TextStyle whiteTextstyle =
+        TextStyle(fontWeight: FontWeight.w800, color: Colors.white);
     FullAppBloc fullAppBloc = FullAppProvider.of(context);
     return StreamBuilder(
         stream: fullAppBloc.topOption,
         builder: (context, snapshot) {
-
-          if(!snapshot.hasData){
+          if (!snapshot.hasData) {
             fullAppBloc.setTopOption(0);
             return Container();
           }
@@ -32,30 +34,55 @@ class _TopChooseOptionsWidgetState extends State<TopChooseOptionsWidget> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  RaisedButton(
-                    onPressed: () {
-                      fullAppBloc.setTopOption(0);
+                  Container(
+                    width: 125.0,
+                    child: FloatingActionButton.extended(
+                      heroTag: "popular",
+                      backgroundColor:
+                          (snapshot.data == 0) ? Colors.orange : Colors.white,
+                      onPressed: () {
+                        fullAppBloc.setTopOption(0);
 //                      Navigator.pushNamed(context, '/');
-                    },
-                    child: (snapshot.data == 0)
-                        ? Text("Popular", style: style)
-                        : Text("Popular"),
+                      },
+                      label: (snapshot.data == 0)
+                          ? Text("Popular", style: whiteTextstyle)
+                          : Text(
+                              "Popular",
+                              style: blackTextstyle,
+                            ),
+                    ),
                   ),
                   SizedBox(
                     width: 20.0,
                   ),
-                  RaisedButton(
-                    onPressed: () {
-                      fullAppBloc.setTopOption(1);
+                  Container(
+                    width: 100.0,
+                    child: FloatingActionButton.extended(
+                      heroTag: "search",
+                      backgroundColor:
+                          (snapshot.data == 1) ? Colors.orange : Colors.white,
+                      onPressed: () {
+                        fullAppBloc.setTopOption(1);
 //                      Navigator.pushNamed(context, '/search');
-                    },
-                    child: (snapshot.data == 1)
-                        ? Text("Search", style: style)
-                        : Text("Search"),
+                      },
+                      label: (snapshot.data == 1)
+                          ? Text("Search", style: whiteTextstyle)
+                          : Text(
+                              "Search",
+                              style: blackTextstyle,
+                            ),
+                    ),
                   ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  IconButton(icon: Icon(Icons.favorite,color: Colors.red,), onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FavouriteScreen()));
+                  })
                 ],
               ),
             ],
           );
-        });  }
+        });
+  }
 }

@@ -3,10 +3,10 @@ import 'search_bloc.dart';
 export 'search_bloc.dart';
 
 class SearchProvider extends InheritedWidget {
-  final SearchBloc bloc;
+  final SearchBloc searchBloc;
 
   SearchProvider({Key key, Widget child})
-      : bloc = SearchBloc(),
+      : searchBloc = SearchBloc(),
         super(key: key, child: child);
 
   @override
@@ -18,6 +18,6 @@ class SearchProvider extends InheritedWidget {
   static SearchBloc of(BuildContext context) {
     return (context.inheritFromWidgetOfExactType(SearchProvider)
     as SearchProvider)
-        .bloc;
+        .searchBloc;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vs_wallpapers/src/bloc/search_screen/search_provider.dart';
 import 'package:vs_wallpapers/src/screens/filter_screen/filter_screen.dart';
+import 'package:vs_wallpapers/src/widgets/images_grid.dart';
 
 import 'widgets/search_bar.dart';
 
@@ -17,12 +18,10 @@ class SearchScreen extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 20.0),
             SearchBar(),
-
+            ImagesGrid(),
           ],
         ),
       ),
     );
   }
-
-
 }

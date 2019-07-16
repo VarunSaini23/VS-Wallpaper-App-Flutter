@@ -22,7 +22,7 @@ class ApiResultModel{
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['totalHits'] = this.totalHits;
     if (this.hits != null) {
-      data['hits'] = this.hits.map((v) => v.toJson()).toList();
+      data['hits'] = this.hits.map((v) => v.toMap()).toList();
     }
     data['total'] = this.total;
     return data;

@@ -12,6 +12,9 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: "VS Wallpapers",
         onGenerateRoute: route,
+        theme: ThemeData(
+            fontFamily: 'OpenSans',
+        ),
       ),
     );
   }

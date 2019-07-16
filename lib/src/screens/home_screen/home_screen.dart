@@ -10,28 +10,30 @@ class HomeScreen extends StatelessWidget {
     FullAppBloc fullAppBloc = FullAppProvider.of(context);
 
     return Scaffold(
-        body: Column(
-        children: <Widget>[
-          TopChooseOptionsWidget(),
-          StreamBuilder(
-            stream: fullAppBloc.topOption,
-            builder: (context,snapshot){
-              if(!snapshot.hasData){
-                return Container();
-              }
+        body: SingleChildScrollView(
+          child: Column(
+          children: <Widget>[
+            TopChooseOptionsWidget(),
+            StreamBuilder(
+              stream: fullAppBloc.topOption,
+              builder: (context,snapshot){
+                if(!snapshot.hasData){
+                  return Container();
+                }
 
-              switch(snapshot.data){
-                case 0:
-                  return PopularScreen();
-                  break;
-                case 1:
-                  return SearchScreen();
-                  break;
-              }
-            },
-          )
-        ],
+                switch(snapshot.data){
+                  case 0:
+                    return PopularScreen();
+                    break;
+                  case 1:
+                    return SearchScreen();
+                    break;
+                }
+              },
+            )
+          ],
       ),
+        ),
     );
   }
 }
