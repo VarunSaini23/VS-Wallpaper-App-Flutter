@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vs_wallpapers/src/bloc/search_screen/search_provider.dart';
 
 class SearchBar extends StatelessWidget {
+  final snackBar = SnackBar(content: Text('Searching!! Please Wait...'));
+
   @override
   Widget build(BuildContext context) {
     SearchBloc searchBloc = SearchProvider.of(context);
@@ -53,8 +55,10 @@ class SearchBar extends StatelessWidget {
           stream: searchBloc.inputText,
           builder: (context, snapshot) {
             return FloatingActionButton(
+              heroTag: "searchBut",
               backgroundColor: Colors.orange,
               onPressed: () {
+                Scaffold.of(context).showSnackBar(snackBar);
                 searchBloc.startSearch(snapshot.data);
               },
               child: Icon(Icons.arrow_forward),

@@ -8,6 +8,8 @@ class TopChooseOptionsWidget extends StatefulWidget {
 }
 
 class _TopChooseOptionsWidgetState extends State<TopChooseOptionsWidget> {
+  final snackBar = SnackBar(content: Text('Fetching Popular Wallpapers!! Please Wait...'));
+
   @override
   Widget build(BuildContext context) {
     TextStyle blackTextstyle =
@@ -25,6 +27,7 @@ class _TopChooseOptionsWidgetState extends State<TopChooseOptionsWidget> {
 
           print(snapshot.data);
           return Column(
+
             children: <Widget>[
               SizedBox(
                 height: 40.0,
@@ -41,11 +44,13 @@ class _TopChooseOptionsWidgetState extends State<TopChooseOptionsWidget> {
                       backgroundColor:
                           (snapshot.data == 0) ? Colors.orange : Colors.white,
                       onPressed: () {
+                        Scaffold.of(context).showSnackBar(snackBar);
                         fullAppBloc.setTopOption(0);
 //                      Navigator.pushNamed(context, '/');
                       },
                       label: (snapshot.data == 0)
                           ? Text("Popular", style: whiteTextstyle)
+
                           : Text(
                               "Popular",
                               style: blackTextstyle,

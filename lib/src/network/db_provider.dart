@@ -4,8 +4,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:vs_wallpapers/src/models/single_image_model.dart';
 
-class DatabaseHelper{
-
+class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
   static final _databaseVersion = 1;
 
@@ -18,10 +17,12 @@ class DatabaseHelper{
   static final columnPageURL = 'pageURL';
 
   DatabaseHelper._privateConstructor();
+
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
   // only have a single app-wide reference to the database
   static Database _database;
+
   Future<Database> get database async {
     if (_database != null) return _database;
     // lazily instantiate the db the first time it is accessed
@@ -34,8 +35,7 @@ class DatabaseHelper{
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, _databaseName);
     return await openDatabase(path,
-        version: _databaseVersion,
-        onCreate: _onCreate);
+        version: _databaseVersion, onCreate: _onCreate);
   }
 
   // SQL code to create the database table
@@ -59,8 +59,8 @@ class DatabaseHelper{
   Future<List<int>> getAllFavouritesIds() async {
     Database db = await instance.database;
     List<int> favouritesId = [];
-    final v = await db.query(table,columns: [columnId]);
-    for (var i in v){
+    final v = await db.query(table, columns: [columnId]);
+    for (var i in v) {
       favouritesId.add(i.values.toList()[0]);
     }
     print(favouritesId);
@@ -71,11 +71,14 @@ class DatabaseHelper{
     Database db = await instance.database;
     List<SingleImageModel> model = [];
     final map = await db.query(table);
-    for (var i in map){
+    for (var i in map) {
       model.add(SingleImageModel.fromJson(i));
     }
     return model;
   }
 
-
+  Future<int> delete(int id) async {
+    Database db = await instance.database;
+    return await db.delete(table, where: '$columnId = ?', whereArgs: [id]);
+  }
 }

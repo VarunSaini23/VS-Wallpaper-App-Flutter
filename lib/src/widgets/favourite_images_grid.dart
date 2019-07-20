@@ -49,7 +49,7 @@ class FavouriteImagesGrid extends StatelessWidget {
                             ));
                       },
                       child: FadeInImage.assetNetwork(
-                        placeholder: "assets/images/loading.gif",
+                        placeholder: "assets/images/loading1.gif",
                         image: snapshot.data.elementAt(index).previewURL,
                         fit: BoxFit.fill,
                       ),

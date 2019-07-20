@@ -37,9 +37,12 @@ dev_dependencies:
   path_provider: ^0.4.1
   flutter_svg: any
   transparent_image: ^1.0.0
+  flutter_launcher_icons: "^0.7.2"
 
-
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
 
 
 # For information on the generic Dart part of this file, see the

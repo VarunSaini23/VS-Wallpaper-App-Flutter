@@ -12,6 +12,9 @@ class SearchBloc{
   Observable<String> get inputText => _inputText.stream;
 
   startSearch(String query) async {
+//    if(_searchResults.stream.has) {
+      await _searchResults.sink.add(null);
+//    }
     final result = await repository.getSearchResult(query);
     print(result.total);
     _searchResults.sink.add(result);

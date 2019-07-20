@@ -20,6 +20,12 @@ class Repository {
     return key;
   }
 
+  removeAsFavourite(SingleImageModel model) async {
+    final key = await dbHelper.delete(model.id);
+    print(key);
+    return key;
+  }
+
   Future<List<SingleImageModel>> getFavouriteWall() async{
     final result = await dbHelper.queryAllRows();
     return result;
