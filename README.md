@@ -1,16 +1,5 @@
-# vs_wallpapers
+# VSWallpapers
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+A Wallpaper app made with flutter using Pixabay Api. This app uses BLOC pattern for state management. Using sqflite, the app stores your favourite wallpapers in the local device storage providing offline capabilities.
+Search for any wallpaper, get popular wallpapers, recommended wallpaper according to your search results.
+You can directly set the wallpaper without downloading or download the wallpaper for future . Also share feature helps you share the wallpapers with your friends
